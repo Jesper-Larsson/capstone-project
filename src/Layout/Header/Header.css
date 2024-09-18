@@ -1,0 +1,11 @@
+header {
+    height: 10rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    gap:4rem
+}
+header img {
+    height: 2.5rem;
+}
