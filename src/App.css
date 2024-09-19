@@ -1,4 +1,7 @@
 body {
   font-family: "Markazi Text", serif;
-  padding: 0 15rem;
+  padding: 0 10%;
+  }
+  div {
+    border: 1px red solid;
   }

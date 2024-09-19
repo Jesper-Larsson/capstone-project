@@ -3,15 +3,23 @@ const NavBar = () => (
   <nav>
     <ul>
       <li>
-        <a>Home</a>
+        <a href="/">Home</a>
       </li>
       <li>
-        <a>About</a>
+        <a href="/">About</a>
       </li>
-      <li>Menu</li>
-      <li>Reservations</li>
-      <li>Order Online</li>
-      <li>Login</li>
+      <li>
+        <a href="/">Menu</a>
+      </li>
+      <li>
+        <a href="/">Reservations</a>
+      </li>
+      <li>
+        <a href="/">Order Online</a>
+      </li>
+      <li>
+        <a href="/">Login</a>
+      </li>
     </ul>
   </nav>
 );

@@ -2,6 +2,8 @@ footer {
     padding: 2rem 0;
     display: flex;
     justify-content: space-between;
+    font-size: 1rem;
+
 }
 
 footer ul {
@@ -10,14 +12,36 @@ footer ul {
 }
 
 footer div {
-    padding-top: 1.5rem;
+    padding: 1.5rem 5%;
     width: 10rem;
 }
 
 footer img {
-    width: 8rem;
+    width: 25%;
+    max-height: 20rem;
+    object-fit: contain;
 }
 
 footer b {
     color: #495E57;
 }
+
+
+@media (min-width: 600px){
+    footer {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 800px){
+    footer {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 1400px){
+    footer {
+        font-size: 2rem;
+    }
+}
+

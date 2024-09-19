@@ -1,14 +1,14 @@
+import AboutSection from "../../Sections/AboutSection";
+import HeroSection from "../../Sections/HeroSection";
+import Specials from "../../Sections/Specials";
+import Testimonals from "../../Sections/Testimonals";
 import "./MainContent.css";
 const MainContent = () => (
   <main>
-    <h1>Main element - content here</h1>
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((id) => (
-      <>
-        <div key={id}>div with id: {id}</div>
-        <br />
-        <br />
-      </>
-    ))}
+    <HeroSection />
+    <Specials />
+    <Testimonals />
+    <AboutSection />
   </main>
 );
 

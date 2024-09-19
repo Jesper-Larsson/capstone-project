@@ -4,8 +4,10 @@ header {
     justify-content: left;
     align-items: center;
     width: 100%;
-    gap:4rem
+    gap:6%;
 }
+
 header img {
-    height: 2.5rem;
+    width: 20%;
+    object-fit: contain;
 }

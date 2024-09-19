@@ -3,7 +3,6 @@ import BigLogo from "../../Images/BigLogo.png";
 const Footer = () => (
   <footer>
     <img src={BigLogo} alt="Litte Lemon Logo" />
-
     <div>
       <b>Doormat Navigation</b>
       <ul>
