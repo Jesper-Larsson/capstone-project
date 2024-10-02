@@ -1,35 +1,56 @@
 import "./Footer.css";
 import BigLogo from "../../Images/BigLogo.png";
+import { Link } from "react-router-dom";
 const Footer = () => (
-  <footer>
+  <footer className="row footer">
     <img src={BigLogo} alt="Litte Lemon Logo" />
-    <div>
+    <article>
       <b>Doormat Navigation</b>
       <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Menu</li>
-        <li>Reservations</li>
-        <li>Order Online</li>
-        <li>Login</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/menu">Menu</Link>
+        </li>
+        <li>
+          <Link to="/booking">Reservations</Link>
+        </li>
+        <li>
+          <Link to="/order">Order Online</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
-    </div>
-    <div>
+    </article>
+    <article>
       <b>Contact</b>
       <ul>
-        <li>Address</li>
-        <li>Phone number</li>
-        <li>Email</li>
+        <li>1st Lemon St.</li>
+        <li>123 456 789</li>
+        <li>
+          <a href="mailto:little-lemon@abc123.com">Email us</a>
+        </li>
       </ul>
-    </div>
-    <div>
+    </article>
+    <article>
       <b>Social Media Links</b>
       <ul>
-        <li>Facebook</li>
-        <li>Instagram</li>
-        <li>Tiktok</li>
+        <li>
+          <a href="https://www.facebook.com/little-lemon">Facebook</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/little-lemon">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com/little-lemon">TikTok</a>
+        </li>
       </ul>
-    </div>
+    </article>
   </footer>
 );
 

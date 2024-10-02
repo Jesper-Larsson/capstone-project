@@ -1,0 +1,108 @@
+.about {
+    display: flex;
+    gap:4%;
+    padding-top: 2rem;
+    padding-bottom: 20vw;
+}
+
+.about h1 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.about h2{
+    font-size: 1.2rem;
+    margin-top: 0;
+    font-weight: normal;
+}
+
+.about-half {
+    width: 48%;
+    position: relative;
+}
+
+.about p {
+    font-family: 'Karla', sans-serif;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #495E57;
+}
+
+.about-image-container {
+    width: 20vw;
+    height: 24vw;
+    position: absolute;
+    overflow: hidden;
+}
+
+.about-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-left-image {
+    top:10vw;
+}
+
+.about-right-image {
+    right: 0;
+}
+
+.about-left-image img {
+    object-position: center center;
+}
+
+.about-right-image img {
+    object-position: 75% center;
+}
+
+@media (min-width: 600px){
+
+
+  .about h1 {
+    font-size: 2.4rem;
+  }
+
+  .about h2 {
+    font-size: 1.8rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+}
+
+
+@media (min-width: 800px){
+
+      .about h1 {
+        font-size: 3rem;
+      }
+
+      .about h2 {
+        font-size: 2.2rem;
+      }
+
+      .about p {
+        font-size: 1.4rem;
+      }
+
+}
+
+@media (min-width: 1400px){
+
+      .about h1 {
+        font-size: 4rem;
+      }
+
+      .about h2 {
+        font-size: 2.4rem;
+      }
+
+      .about p {
+        font-size: 1.8rem;
+      }
+
+}
+

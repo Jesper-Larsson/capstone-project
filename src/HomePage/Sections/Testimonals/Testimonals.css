@@ -1,0 +1,62 @@
+.testimonals {
+    background-color: #EDEFEE;
+    padding-bottom: 8rem;
+}
+
+.testimonal-cards {
+    display: grid;
+    grid-template-columns: 100%;
+    gap:4%;
+}
+
+.testimonals h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #495E57;
+    padding-top: 1rem;
+}
+
+@media (min-width: 600px){
+    .testimonals h1 {
+        font-size: 2rem;
+        padding-top: 2rem;
+    }
+    .testimonals {
+        padding-bottom: 4rem;
+    }
+    .testimonal-cards {
+        grid-template-columns: 48% 48%;
+        gap:4%;
+    }
+}
+
+
+@media (min-width: 800px){
+    .testimonals h1 {
+        font-size: 2.5rem;
+        padding-top: 2.5rem;
+    }
+    .testimonals {
+        padding-bottom: 6rem;
+    }
+    .testimonal-cards {
+        grid-template-columns: 31% 31% 31%;
+        gap:3.5%;
+    }
+}
+
+
+@media (min-width: 1400px){
+    .testimonals h1 {
+        font-size: 3rem;
+        padding: 3rem;
+    }
+    .testimonals {
+        padding-bottom: 10rem;
+    }
+    .testimonal-cards {
+        grid-template-columns: 22% 22% 22% 22%;
+        gap:4%;
+    }
+}
+

@@ -1,3 +1,31 @@
-main {
-    
+.not-found h1 {
+    font-size: 1.5rem;
+}
+
+.not-found a {
+    text-decoration: none;
+    color: #495E57;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (min-width: 600px){
+    .not-found h1 {
+        font-size: 2rem;
+    }
+}
+
+
+@media (min-width: 800px){
+    .not-found h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1400px){
+    .not-found h1 {
+        font-size: 3rem;
+    }
 }

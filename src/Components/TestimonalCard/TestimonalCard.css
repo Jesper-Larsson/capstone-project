@@ -1,0 +1,64 @@
+.testimonal-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    font-family: 'Karla', sans-serif;
+    padding: 0.4rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.testimonal-card img{
+    object-fit: cover;
+    object-position: center center;
+    width: 10vw;
+    height: 10vw;
+}
+.testimonal-card p{
+    color: #495E57;
+    font-size: 0.8rem;
+    font-weight: lighter;
+    text-align: center;
+}
+.testimonal-middle {
+    margin-top: 1rem;
+    display: flex;
+    gap:0.2rem;
+    align-items: center;
+}
+
+@media (min-width: 600px){
+    .testimonal-card {
+        font-size: 0.7rem;
+        padding: 0.6rem;
+
+    }
+    .testimonal-card p{
+        font-size: 0.6rem;
+    }
+}
+
+
+@media (min-width: 800px){
+    .testimonal-card {
+        font-size: 1rem;
+        padding: 0.8rem;
+
+    }
+    .testimonal-card p{
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (min-width: 1400px){
+    .testimonal-card {
+        font-size: 1.3rem;
+        padding: 1.2rem;
+
+    }
+    .testimonal-card p{
+        font-size: 1rem;
+    }
+}
+

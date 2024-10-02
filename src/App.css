@@ -1,7 +1,25 @@
 body {
   font-family: "Markazi Text", serif;
-  padding: 0 10%;
   }
-  div {
-    border: 1px red solid;
-  }
+
+.lemon-yellow-text {
+  color: #F4CE14;
+}
+
+.lemon-green-bg {
+  background-color: #495E57;
+}
+
+.white-text {
+  color: white;
+}
+
+.karla-text {
+  font-family: 'Karla', 'sans-serif';
+}
+
+.row {
+  padding: 0 15%;
+}
+
+div, header>*{border: 1px red solid;}

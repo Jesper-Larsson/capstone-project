@@ -1,9 +1,10 @@
-footer {
-    padding: 2rem 0;
+.footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     display: flex;
     justify-content: space-between;
-    font-size: 1rem;
-
+    font-size: 0.7rem;
+    background-color: #EDEFEE;
 }
 
 footer ul {
@@ -11,13 +12,17 @@ footer ul {
     padding: 0;
 }
 
+footer a {
+    text-decoration: none;
+    color: black;
+}
+
 footer div {
-    padding: 1.5rem 5%;
-    width: 10rem;
+    width: 20%;
 }
 
 footer img {
-    width: 25%;
+    width: 20vw;
     max-height: 20rem;
     object-fit: contain;
 }
@@ -28,19 +33,25 @@ footer b {
 
 
 @media (min-width: 600px){
-    footer {
+    .footer {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
         font-size: 1rem;
     }
 }
 
 @media (min-width: 800px){
-    footer {
+    .footer {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
         font-size: 1.4rem;
     }
 }
 
 @media (min-width: 1400px){
-    footer {
+    .footer {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
         font-size: 2rem;
     }
 }

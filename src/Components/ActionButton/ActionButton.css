@@ -1,0 +1,50 @@
+.action-button {
+    font-family: 'Karla',  sans-serif;
+    font-weight: bold;
+    background-color: #F4CE14;
+    border: 0;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+
+.action-button:hover{
+    background-color: #dbb912;
+}
+
+.action-button:active{
+    background-color: #685809;
+    color: white;
+}
+
+.action-button:disabled {
+    cursor:default;
+    color:  #EDEFEE;
+    background-color: gray;
+}
+
+
+@media (min-width: 600px){
+    .action-button{
+        border-radius: 0.8rem;
+        font-size: 1.2rem;
+   }
+}
+
+@media (min-width: 800px){
+    .action-button{
+        border-radius: 1rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media (min-width: 1400px){
+    .action-button{
+        border-radius: 1.2rem;
+        font-size: 2rem;
+    }
+}
+
+

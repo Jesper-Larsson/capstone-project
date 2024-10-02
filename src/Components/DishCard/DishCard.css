@@ -1,0 +1,176 @@
+.dish-card {
+    background-color: #EDEFEE;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+.dish-card h2{
+    font-size: 1.4rem;
+    margin:0;
+    padding: 0;
+}
+
+.dish-card p {
+    margin: 0;
+    color: #495E57;
+    font-size: 0.8rem;
+    font-family: 'Karla', sans-serif;
+}
+
+.dish-card-info {
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.dish-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dish-card-top div {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-family: 'Karla', sans-serif;
+    color: #EE9972;
+}
+
+.dish-card-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:0.5rem;
+    min-height: 5rem;
+}
+
+.dish-image-container {
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    width: 100%;
+    height: 10rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.dish-image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.dish-card b {
+    color:#333333;
+    font-size: 0.8rem;
+    font-family: 'Karla', sans-serif;
+}
+
+.dish-card-delivery {
+    display: flex;
+    align-items: center;
+    gap:2%;
+}
+
+.dish-card-bottom img {
+    width: 1rem;
+    height: 0.8rem;
+}
+
+@media (min-width: 600px){
+    .dish-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .dish-card p {
+        font-size: 0.8rem;
+    }
+
+    .dish-card-top div {
+        font-size:1rem;
+    }
+
+    .dish-card b {
+        font-size: 0.8rem;
+    }
+
+    .dish-image-container {
+        height: 10rem;
+    }
+
+    .dish-card-bottom {
+        min-height: 8rem;
+    }
+
+    .dish-card-bottom img {
+        width: 1rem;
+        height: 0.8rem;
+    }
+}
+
+
+@media (min-width: 800px){
+    .dish-card h2 {
+        font-size: 1.4rem;
+    }
+
+    .dish-card p {
+        font-size: 0.8rem;
+    }
+
+    .dish-card-top div {
+        font-size:1rem;
+    }
+
+    .dish-card b {
+        font-size: 0.8rem;
+    }
+
+    .dish-image-container {
+        height: 8rem;
+    }
+
+    .dish-card-bottom {
+        min-height: 9rem;
+    }
+
+    .dish-card-bottom img {
+        width: 1rem;
+        height: 0.8rem;
+    }
+}
+
+
+@media (min-width: 1400px){
+    .dish-card h2 {
+        font-size: 2rem;
+    }
+
+    .dish-card p {
+        font-size: 1rem;
+    }
+
+    .dish-card-top div {
+        font-size:1.2rem;
+    }
+
+    .dish-card b {
+        font-size: 1rem;
+    }
+
+    .dish-image-container {
+        height: 10rem;
+    }
+
+    .dish-card-bottom {
+        min-height: 9rem;
+    }
+
+    .dish-card-bottom img {
+        width: 1.2rem;
+        height: 1rem;
+    }
+}
+
