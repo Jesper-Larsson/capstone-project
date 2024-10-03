@@ -12,12 +12,20 @@ const AboutSection = () => (
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
-      <div className="about-half">
+      <div
+        className="about-half"
+        role="img"
+        aria-label="A collage of the restaurant and the chefs."
+      >
         <div className="about-image-container about-left-image">
-          <img className="about-img-left" src={restaurantImage} alt="chef" />
+          <img
+            className="about-img-left"
+            src={restaurantImage}
+            alt="The restaurant."
+          />
         </div>
         <div className="about-image-container about-right-image">
-          <img className="about-img-right" src={chefsImage} alt="chef" />
+          <img className="about-img-right" src={chefsImage} alt="The chefs." />
         </div>
       </div>
     </article>

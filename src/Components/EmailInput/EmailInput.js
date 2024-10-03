@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./EmailInput.css";
-const EmailInput = ({ id, label, value, setValue }) => {
+const EmailInput = ({ id, label, value, setValue, isRequired }) => {
   const [hasInvalidInput, setHasInvalidInput] = useState(false);
   const validate = (e) => {
     const isValid = e.target.validity.valid && e.target.value !== "";
@@ -15,6 +15,7 @@ const EmailInput = ({ id, label, value, setValue }) => {
         className={cssClass}
         type="email"
         id={id}
+        aria-required={isRequired}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onBlur={(e) => validate(e)}

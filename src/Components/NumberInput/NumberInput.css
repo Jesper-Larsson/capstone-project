@@ -1,0 +1,46 @@
+.number-input input {
+    padding: 0.2rem 0.5rem;
+    background-color: #D9D9D9;
+    border: 0;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+}
+
+.number-input label{
+    font-size: 1rem;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+
+
+
+@media (min-width: 600px){
+    .number-input input {
+        font-size: 1rem;
+    }
+    .number-input label{
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (min-width: 800px){
+    .number-input input {
+        font-size: 1.5rem;
+    }
+    .number-input label{
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1400px){
+    .number-input input {
+        font-size: 2rem;
+    }
+    .number-input label{
+        font-size: 2.5rem;
+    }
+}

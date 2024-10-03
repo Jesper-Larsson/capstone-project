@@ -1,10 +1,11 @@
 import "./DatePicker.css";
-const DatePicker = ({ id, label, date, setDate, todayDateString }) => (
+const DatePicker = ({ id, label, date, setDate, minDate, isRequired }) => (
   <div className="datepicker">
     <label htmlFor={id}>{label}</label>
     <input
+      aria-required={isRequired}
       type="date"
-      min={todayDateString}
+      min={minDate}
       name={id}
       id={id}
       value={date}

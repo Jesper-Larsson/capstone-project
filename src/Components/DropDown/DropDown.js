@@ -1,9 +1,10 @@
 import "./DropDown.css";
 
-const DropDown = ({ id, label, values, value, setValue }) => (
+const DropDown = ({ id, label, values, value, setValue, isRequired }) => (
   <div className="dropdown">
     <label htmlFor={id}>{label}</label>
     <select
+      aria-required={isRequired}
       name={id}
       id={id}
       value={value}
