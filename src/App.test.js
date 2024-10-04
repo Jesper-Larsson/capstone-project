@@ -1,43 +1,69 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import BookingForm from "./BookingPage/Stages/BookingForm";
-import App from "./App";
 import {
-  getTodayString,
-  initializeTimes,
-  updateTimes,
-} from "./Utils/DateFuntions";
+  fireEvent,
+  render,
+  screen,
+  cleanup,
+  waitFor,
+} from "@testing-library/react";
+import BookingForm from "./BookingPage/Stages/BookingForm";
+import { getTodayString, initializeTimes } from "./Utils/DateFuntions";
+import { MemoryRouter } from "react-router-dom";
+import Main from "./Layout/Main/Main";
 
-//basic rendering
-test("renders booking form", () => {
-  const dummyFunc = () => {};
+const today = getTodayString();
+const tomorrow = new Date(
+  Date.now() + 24 * 60 * 60 * 1000
+).toLocaleDateString();
+const store = {};
+
+const setup = () => {
+  global.fetchAPI = jest.fn().mockImplementation((date) => {
+    if (date.toLocaleDateString() === tomorrow) {
+      return ["17:30", "18:00", "21:30"];
+    }
+    return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  });
+  global.submitAPI = jest.fn().mockImplementation((formData) => true);
+  const getItemMock = jest
+    .fn()
+    .mockImplementation((key) =>
+      store.hasOwnProperty(key) ? store[key] : null
+    );
+  const setItemMock = jest.fn().mockImplementation((key, value) => {
+    store[key] = value.toString();
+  });
+
+  Storage.prototype.setItem = setItemMock;
+  Storage.prototype.getItem = getItemMock;
   render(
-    <BookingForm
-      date="2024-10-02"
-      setDate={dummyFunc}
-      time="17:00"
-      noOfGuests={1}
-      setNoOfGuests={dummyFunc}
-      occasion="-"
-      setOccasion={dummyFunc}
-      goToConfirmation={dummyFunc}
-      availableTimes={["17:00", "22:00"]}
-      minDate="2024-10-02"
-    />
+    <MemoryRouter initialEntries={["/"]}>
+      <Main />
+    </MemoryRouter>
   );
-  const header = screen.getByText(/Enter booking information/i);
-  expect(header).toBeInTheDocument();
-});
-
-test("test selectable times and datepicker", () => {
   //initialize app with state
-  render(<App />);
   const goToBookingButton = screen.getByRole("button", {
     name: /Reserve a Table/,
   });
-  //go to booking page
   fireEvent.click(goToBookingButton);
+};
+
+afterAll(() => {
+  jest.clearAllMocks();
+});
+
+//basic rendering
+test("renders booking form", () => {
+  setup();
+  const header = screen.getByText(/Enter booking information/i);
+  expect(header).toBeInTheDocument();
+  cleanup();
+});
+
+test("available times are correctly changing", () => {
+  setup();
+
+  //go to booking page
   const timeDropDown = screen.getByLabelText(/Select a time */);
-  expect(timeDropDown).toBeInTheDocument();
 
   const timeOptionsAtStart = Array.from(timeDropDown.children).map(
     (option) => option.textContent
@@ -57,20 +83,14 @@ test("test selectable times and datepicker", () => {
   expect(timeOptionsAtStart).toEqual(expectedAvailableTimesAtStart);
 
   const datepicker = screen.getByLabelText(/Select a date */);
-  const today = getTodayString();
   expect(datepicker.value).toBe(today);
 
   //change date and verify availableTimes
-  const newDate = new Date(
-    Date.now() + 24 * 60 * 60 * 1000
-  ).toLocaleDateString();
-  fireEvent.change(datepicker, { target: { value: newDate } });
-  expect(datepicker.value).toBe(newDate);
 
-  const expectedAvailableTimesAfterDateChange = updateTimes(null, {
-    type: "changed_date",
-    selectedDate: newDate,
-  }).availableTimes;
+  fireEvent.change(datepicker, { target: { value: tomorrow } });
+  expect(datepicker.value).toBe(tomorrow);
+
+  const expectedAvailableTimesAfterDateChange = ["17:30", "18:00", "21:30"];
 
   const timeOptionsAfterDateChange = Array.from(timeDropDown.children).map(
     (option) => option.textContent
@@ -79,12 +99,50 @@ test("test selectable times and datepicker", () => {
   expect(timeOptionsAfterDateChange).toEqual(
     expectedAvailableTimesAfterDateChange
   );
+  cleanup();
+});
 
+test("localstorage is being written to", () => {
+  setup();
   //sumbit firt part of booking form
   const goToConfirmationButton = screen.getByRole("button", {
     name: /Go to confirmation/,
   });
   fireEvent.click(goToConfirmationButton);
-  const bookingDetailsHeader = screen.getByText(/Booking details/i);
+  const bookingDetailsHeader = screen.getByText(/Booking details/);
   expect(bookingDetailsHeader).toBeInTheDocument();
+
+  //confirm bookings
+  const emailIput = screen.getByLabelText(/Your email address */);
+  fireEvent.change(emailIput, { target: { value: "abc@123.com" } });
+  fireEvent.blur(emailIput);
+  const confirmBookingButton = screen.getByRole("button", {
+    name: /Confirm booking/,
+  });
+  fireEvent.click(confirmBookingButton);
+  expect(store["bookings"]).toContain("date");
+  cleanup();
+});
+
+test("bookings are read from localstorage", async () => {
+  setup();
+  const goToConfirmationButton = screen.getByRole("button", {
+    name: /Go to confirmation/,
+  });
+  fireEvent.click(goToConfirmationButton);
+
+  //confirm bookings
+  const emailIput = screen.getByLabelText(/Your email address */);
+  fireEvent.change(emailIput, { target: { value: "abc@123.com" } });
+  fireEvent.blur(emailIput);
+  const confirmBookingButton = screen.getByRole("button", {
+    name: /Confirm booking/,
+  });
+  fireEvent.click(confirmBookingButton);
+  await waitFor(() => {
+    //let useEffect read from localstorage
+    const createdBookingInfo = screen.getByText(/Regular booking/);
+    expect(createdBookingInfo).toBeInTheDocument();
+  });
+  cleanup();
 });

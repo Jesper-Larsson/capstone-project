@@ -1,0 +1,6 @@
+{
+    "globals": {
+      "fetchAPI": "readonly",
+      "submitAPI": "readonly"
+    }
+  }
