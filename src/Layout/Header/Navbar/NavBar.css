@@ -1,15 +1,15 @@
 nav {
-    display: flex;
+    gap:4%;
     width: 80%;
 }
 nav ul{
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     list-style: none;
-    font-size: 0.7rem;
+    font-size: 1rem;
 }
 nav ul a{
     text-decoration: none;
@@ -18,7 +18,8 @@ nav ul a{
 
 @media (min-width: 600px){
     nav ul {
-        font-size: 1rem;
+        display: flex;
+        justify-content: space-between;
     }
 }
 

@@ -8,7 +8,7 @@ import BookingConfirmation from "./Stages/BookingConfirmation";
 const BookingPage = ({
   selectedDate,
   availableTimes,
-  dispatch,
+  updateAvailableTimes,
   minDate,
   submitForm,
 }) => {
@@ -36,7 +36,7 @@ const BookingPage = ({
             <BookingForm
               date={selectedDate}
               setDate={(date) => {
-                dispatch({ type: "changed_date", selectedDate: date });
+                updateAvailableTimes(date);
               }}
               time={time}
               setTime={setTime}

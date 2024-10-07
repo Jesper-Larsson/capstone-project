@@ -4,7 +4,9 @@ const TestimonalCard = ({ photo, rating, name, reviewText }) => {
 
   return (
     <article className="testimonal-card">
-      <div>{stars}</div>
+      <div role="img" aria-label="Star rating">
+        {stars}
+      </div>
       <div className="testimonal-middle">
         <img src={photo} alt={`Profile ${name}`}></img>
         <div>{name}</div>

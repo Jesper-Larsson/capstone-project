@@ -20,7 +20,11 @@ const BookingConfirmation = ({
     >
       <div className="top">
         <div>
-          <b className="back" onClick={goBack}>
+          <b
+            className="back"
+            onClick={goBack}
+            aria-label="Go back to booking form"
+          >
             {"⮌"}
           </b>
         </div>
@@ -43,7 +47,10 @@ const BookingConfirmation = ({
         setValue={setEmailInputValue}
         isRequired={true}
       />
-      <ActionButton isDisabled={!emailInputValue.isValid}>
+      <ActionButton
+        isDisabled={!emailInputValue.isValid}
+        ariaLabel="Confirm booking"
+      >
         Confirm booking
       </ActionButton>
     </form>

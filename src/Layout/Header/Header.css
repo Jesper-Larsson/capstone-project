@@ -4,6 +4,7 @@ header {
     justify-content: left;
     align-items: center;
     gap:6%;
+    min-height: 3rem;
 }
 
 header img {

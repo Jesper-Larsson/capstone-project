@@ -1,0 +1,24 @@
+.loading {
+    border-radius: 2rem;
+    background-color: #495E57;
+    color: white;
+    position: fixed;
+    text-align: center;
+    width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    top: 30%;
+    left: 25%;
+    z-index: 999;
+    font-size: 4rem;
+    animation: pulsate 0.8s ease-in-out infinite;
+}
+
+@keyframes pulsate {
+    0%, 100% {
+      transform: scale(1); /* Default size */
+    }
+    50% {
+      transform: scale(1.2); /* Scale up by 20% */
+    }
+  }

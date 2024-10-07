@@ -1,12 +1,10 @@
 import { useState } from "react";
 import "./EmailInput.css";
 const EmailInput = ({ id, label, value, setValue, isRequired }) => {
-  const [email, setEmail] = useState(value);
   const [hasInvalidInput, setHasInvalidInput] = useState(false);
   const validate = (e) => {
-    const isValid = e.target.validity.valid && email !== "";
+    const isValid = e.target.validity.valid && e.target.value !== "";
     setHasInvalidInput(!isValid);
-    setValue({ isValid: isValid, email: email });
   };
   const cssClass = hasInvalidInput ? "error-input" : "";
   return (
@@ -18,8 +16,13 @@ const EmailInput = ({ id, label, value, setValue, isRequired }) => {
         id={id}
         aria-required={isRequired}
         required={isRequired}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={value}
+        onChange={(e) =>
+          setValue({
+            isValid: e.target.validity.valid,
+            email: e.target.value,
+          })
+        }
         onBlur={(e) => validate(e)}
       />
       {hasInvalidInput && (

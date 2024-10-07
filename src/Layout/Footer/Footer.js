@@ -5,7 +5,7 @@ const Footer = () => (
   <footer className="row footer">
     <img src={BigLogo} alt="Litte Lemon Logo" />
     <article>
-      <b>Doormat Navigation</b>
+      <b>Page Navigation</b>
       <ul>
         <li>
           <Link to="/">Home</Link>

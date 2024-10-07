@@ -11,6 +11,7 @@ const DatePicker = ({
 }) => {
   const [isTouched, setIsTouched] = useState(false);
   const cssClass = isTouched && date < minDate ? "error-input" : "";
+  const [innerDate, setInnerDate] = useState(date);
   return (
     <div className="datepicker">
       <label htmlFor={id}>{label}</label>
@@ -22,9 +23,12 @@ const DatePicker = ({
         min={minDate}
         name={id}
         id={id}
-        value={date}
-        onChange={(e) => setDate(e.currentTarget.value)}
-        onBlur={() => setIsTouched(true)}
+        value={innerDate}
+        onChange={(e) => setInnerDate(e.currentTarget.value)}
+        onBlur={() => {
+          setIsTouched(true);
+          setDate(innerDate);
+        }}
       />
       {isTouched && date < minDate && (
         <div className="error-text">{errorMsg}</div>

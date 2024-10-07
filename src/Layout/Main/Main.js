@@ -1,4 +1,4 @@
-import { json, Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import HomePage from "../../HomePage/HomePage";
 import BookingPage from "../../BookingPage/BookingPage";
 import "./Main.css";
@@ -9,29 +9,60 @@ import {
   getTodayString,
 } from "../../Utils/DateFuntions";
 import ConfirmedBooking from "../../ConfirmedBooking/ConfirmedBooking";
+import LoadingIndicator from "../../Components/LoadingIndicator/LoadingIndicator";
+import ErrorToast from "../../Components/ErrorToast/ErrorToast";
+import delay from "../../Utils/Delay";
 
 const Main = () => {
   const [bookings, setBookings] = useState(
     JSON.parse(localStorage.getItem("bookings")) || []
   );
   const navigate = useNavigate();
+  const [loadingState, setLoadingState] = useState({
+    isLoading: false,
+    msg: "",
+  });
+  const [error, setError] = useState("");
   const [{ selectedDate, availableTimes }, dispatch] = useReducer(
     updateTimes,
     initializeTimes()
   );
 
+  const updateAvailableTimes = async (newDate) => {
+    setLoadingState({ isLoading: true, msg: "Loading time slots..." });
+    await delay(800);
+    dispatch({ type: "changed_date", selectedDate: newDate });
+    setLoadingState({ isLoading: false, msg: "" });
+  };
   useEffect(
     () => localStorage.setItem("bookings", JSON.stringify(bookings)),
     [bookings]
   );
-  const submitForm = (formData) => {
+  const submitForm = async (formData) => {
+    setError("");
+    setLoadingState({ isLoading: true, msg: "Submitting booking..." });
+    await delay(800);
     if (submitAPI(formData)) {
       navigate("/confirmation");
+    } else {
+      setError("Submission went wrong. Please try again.");
     }
+    setLoadingState({ isLoading: false, msg: "" });
     setBookings([...bookings, formData]);
   };
   return (
     <main>
+      {loadingState.isLoading && (
+        <LoadingIndicator loadingMessage={loadingState.msg} />
+      )}
+      {error && (
+        <ErrorToast
+          errorMessage={error}
+          destroySelf={() => {
+            setError("");
+          }}
+        />
+      )}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
@@ -42,7 +73,7 @@ const Main = () => {
             <BookingPage
               selectedDate={selectedDate}
               availableTimes={availableTimes}
-              dispatch={dispatch}
+              updateAvailableTimes={updateAvailableTimes}
               minDate={getTodayString()}
               submitForm={submitForm}
             />

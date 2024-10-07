@@ -59,7 +59,7 @@ test("renders booking form", () => {
   cleanup();
 });
 
-test("available times are correctly changing", () => {
+test("available times are correctly changing", async () => {
   setup();
 
   //go to booking page
@@ -91,6 +91,7 @@ test("available times are correctly changing", () => {
   //change date and verify availableTimes
 
   fireEvent.change(datepicker, { target: { value: tomorrow } });
+  fireEvent.blur(datepicker);
   expect(datepicker.value).toBe(tomorrow);
 
   const expectedAvailableTimesAfterDateChange = [
@@ -99,18 +100,19 @@ test("available times are correctly changing", () => {
     "18:00",
     "21:30",
   ];
+  await waitFor(() => {
+    const timeOptionsAfterDateChange = Array.from(timeDropDown.children).map(
+      (option) => option.textContent
+    );
 
-  const timeOptionsAfterDateChange = Array.from(timeDropDown.children).map(
-    (option) => option.textContent
-  );
-
-  expect(timeOptionsAfterDateChange).toEqual(
-    expectedAvailableTimesAfterDateChange
-  );
+    expect(timeOptionsAfterDateChange).toEqual(
+      expectedAvailableTimesAfterDateChange
+    );
+  });
   cleanup();
 });
 
-test("localstorage is being written to", () => {
+test("localstorage is being written to", async () => {
   setup();
   //choose some valid values
   const timeDropDown = screen.getByLabelText(/Select a time */);
@@ -135,7 +137,10 @@ test("localstorage is being written to", () => {
     name: /Confirm booking/,
   });
   fireEvent.click(confirmBookingButton);
-  expect(store["bookings"]).toContain("date");
+
+  await waitFor(() => {
+    expect(store["bookings"]).toContain("date");
+  });
   cleanup();
 });
 
@@ -213,16 +218,21 @@ test("HTML validation occassion", () => {
   cleanup();
 });
 
-test("JS validation of date", () => {
+test("JS validation of date", async () => {
   setup();
   const datepicker = screen.getByLabelText(/Select a date */);
   fireEvent.change(datepicker, { target: { value: yesterday } });
   fireEvent.blur(datepicker);
-  const errorText = screen.getByText(/Selected date must be in the future/);
-  expect(errorText).toBeInTheDocument();
+  await waitFor(() => {
+    const errorText = screen.queryByText(/Selected date must be in the future/);
+    expect(errorText).toBeInTheDocument();
+  });
   fireEvent.change(datepicker, { target: { value: tomorrow } });
   fireEvent.blur(datepicker);
-  expect(errorText).not.toBeInTheDocument();
+  await waitFor(() => {
+    const errorText = screen.queryByText(/Selected date must be in the future/);
+    expect(errorText).not.toBeInTheDocument();
+  });
   cleanup();
 });
 

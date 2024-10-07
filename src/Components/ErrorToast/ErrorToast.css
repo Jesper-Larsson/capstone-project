@@ -1,0 +1,27 @@
+.error-toast {
+    border-radius: 2rem;
+    background-color: red;
+    color: white;
+    position: fixed;
+    text-align: center;
+    width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    top: 30%;
+    left: 25%;
+    z-index: 999;
+    font-size: 4rem;
+    animation: error-fade 4s ease-in-out;
+}
+
+@keyframes error-fade {
+    0%, 100% {
+      opacity: 0; /* Default size */
+    }
+    20% {
+      opacity: 1; /* Scale up by 20% */
+    }
+    80%{
+        opacity: 1;
+    }
+  }

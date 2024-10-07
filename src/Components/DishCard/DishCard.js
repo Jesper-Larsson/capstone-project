@@ -9,7 +9,9 @@ const DishCard = ({ imgSrc, title, description, price }) => {
       <div className="dish-card-info">
         <div className="dish-card-top">
           <h2>{title}</h2>
-          <div>${price}</div>
+          <div role="img" aria-label={`Price icon with price: $${price}.`}>
+            ${price}
+          </div>
         </div>
         <div className="dish-card-bottom">
           <div>
