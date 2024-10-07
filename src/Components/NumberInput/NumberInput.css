@@ -14,7 +14,15 @@
     margin-top: 0.5rem;
 }
 
+.number-input .error-input {
+    box-shadow:inset 0 0 0 0.1rem red;
+}
 
+.number-input .error-text {
+    font-size: 0.6rem;
+    color: red;
+    font-family: 'Karla', sans-serif;
+}
 
 
 @media (min-width: 600px){
@@ -23,6 +31,9 @@
     }
     .number-input label{
         font-size: 1.5rem;
+    }
+    .number-input .error-text {
+        font-size: 0.9rem;
     }
 }
 
@@ -34,6 +45,9 @@
     .number-input label{
         font-size: 2rem;
     }
+    .number-input .error-text {
+        font-size: 1.2rem;
+    }
 }
 
 @media (min-width: 1400px){
@@ -42,5 +56,8 @@
     }
     .number-input label{
         font-size: 2.5rem;
+    }
+    .number-input .error-text {
+        font-size: 1.5rem;
     }
 }

@@ -16,17 +16,15 @@ const BookingPage = ({
 
   const [time, setTime] = useState("");
 
-  const [noOfGuests, setNoOfGuests] = useState(1);
-  const [occasion, setOccasion] = useState("-");
+  const [noOfGuests, setNoOfGuests] = useState(0);
+  const [occasion, setOccasion] = useState("");
   const [emailInputValue, setEmailInputValue] = useState({
     isValid: false,
     email: "",
   });
 
   useEffect(() => {
-    if (availableTimes.length > 0) {
-      setTime(availableTimes[0]);
-    }
+    setTime("");
   }, [availableTimes]);
 
   return (

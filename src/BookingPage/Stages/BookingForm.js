@@ -35,14 +35,13 @@ const BookingForm = ({
         label="Select a date *"
         date={date}
         setDate={(date) => {
-          if (date >= minDate) {
-            setDate(date);
-          } else {
-          } //alert("Booking date must be in the future.");
+          setDate(date);
         }}
         minDate={minDate}
+        errorMsg="Selected date must be in the future."
+        isRequired={true}
       />
-      {availableTimes.length > 0 ? (
+      {availableTimes.length > 0 && date >= minDate ? (
         <>
           <DropDown
             id="time"
@@ -51,30 +50,43 @@ const BookingForm = ({
             value={time}
             setValue={setTime}
             isRequired={true}
+            errorMsg="You need to choose an available time slot."
           />
           <NumberInput
-            min="1"
-            max="10"
+            min={1}
+            max={10}
             id="guests"
             label="Number of guests *"
             value={noOfGuests}
             setValue={setNoOfGuests}
             isRequired={true}
+            errorMsg="Number of guests must be between 1 and 10."
           />
           <DropDown
             id="occasion"
             label="Occasion"
-            values={["-", "Birthday", "Anniversary"]}
+            values={["Birthday", "Anniversary"]}
             value={occasion}
             setValue={setOccasion}
             isRequired={false}
           />
         </>
       ) : (
-        <p>Sorry, we are fully booked this date. Please choose another date.</p>
+        <p>
+          Sorry, we don't have any available slots this date. Please choose
+          another date.
+        </p>
       )}
       <div className="booking-bottom">
-        <ActionButton isDisabled={availableTimes.length === 0}>
+        <ActionButton
+          isDisabled={
+            availableTimes.length === 0 ||
+            noOfGuests <= 0 ||
+            noOfGuests > 10 ||
+            time === "" ||
+            date < minDate
+          }
+        >
           Go to confirmation
         </ActionButton>
       </div>

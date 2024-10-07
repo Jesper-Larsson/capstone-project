@@ -14,6 +14,16 @@
     margin-top: 0.5rem;
 }
 
+.dropdown .error-input {
+    box-shadow:inset 0 0 0 0.1rem red;
+}
+
+.dropdown .error-text {
+    font-size: 0.6rem;
+    color: red;
+    font-family: 'Karla', sans-serif;
+}
+
 @media (min-width: 600px){
 
     .dropdown select  {
@@ -21,6 +31,9 @@
     }
     .dropdown label {
         font-size: 1.5rem;
+    }
+    .dropdown .error-text {
+        font-size: 0.9rem;
     }
 }
 
@@ -33,6 +46,9 @@
     .dropdown label {
         font-size: 2rem;
     }
+    .dropdown .error-text {
+        font-size: 1.2rem;
+    }
 }
 
 @media (min-width: 1400px){
@@ -42,5 +58,9 @@
     }
     .dropdown label {
         font-size: 2.5rem;
+    }
+
+    .dropdown .error-text {
+        font-size: 1.5rem;
     }
 }

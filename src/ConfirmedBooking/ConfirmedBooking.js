@@ -28,7 +28,7 @@ export default ConfirmedBooking;
 const BookingEntry = ({ date, time, noOfGuests, email, occasion }) => (
   <div className="booking-entry">
     <p>
-      <b>{occasion === "-" ? "Regular" : occasion} booking</b>
+      <b>{occasion === "" ? "Regular" : occasion} booking</b>
     </p>
     <p>Date: {date}</p>
     <p>Time: {time}</p>

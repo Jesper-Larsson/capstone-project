@@ -17,6 +17,7 @@ const EmailInput = ({ id, label, value, setValue, isRequired }) => {
         type="email"
         id={id}
         aria-required={isRequired}
+        required={isRequired}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={(e) => validate(e)}
