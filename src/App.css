@@ -21,5 +21,3 @@ body {
 .row {
   padding: 0 15%;
 }
-
-div, header>*{border: 1px red solid;}

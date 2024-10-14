@@ -33,7 +33,13 @@ const Footer = () => (
         <li>1st Lemon St.</li>
         <li>123 456 789</li>
         <li>
-          <a href="mailto:little-lemon@abc123.com">Email us</a>
+          <a href="mailto:little-lemon@abc123.com">
+            Email us
+            <span role="img" aria-label={`Clickable Email icon.`}>
+              {" "}
+              ✉
+            </span>
+          </a>
         </li>
       </ul>
     </article>
